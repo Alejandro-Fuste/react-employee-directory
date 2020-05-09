@@ -23,14 +23,3 @@ class App extends Component {
 }
 
 export default App;
-
-// {this.state.employees.map(({ login, picture, name, phone, email, dob }) => (
-// 	<TableRows
-// 		key={login.salt}
-// 		picture={picture.thumbnail}
-// 		name={`${name.first} ${name.last}`}
-// 		phone={phone}
-// 		email={email}
-// 		dob={dob}
-// 	/>
-// ))}
