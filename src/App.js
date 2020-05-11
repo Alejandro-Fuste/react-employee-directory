@@ -24,12 +24,26 @@ class App extends Component {
 			(employee) => employee.name.first === query || employee.name.last === query
 		);
 
-		// searchFilter = (query) => {
-		// 	// Creating search filter to narrow down employee list
-		// 	return people.filter((employee) => (employee.name.first || employee.name.last) === query)};
-
 		this.setState({ employees });
 		console.log(employees);
+	};
+
+	sortEmployees = () => {
+		const compare = (a, b) => {
+			const personA = a.name.last.toUpperCase();
+			const personB = b.name.last.toUpperCase();
+
+			let comparison = 0;
+			if (personA > personB) {
+				comparison = 1;
+			} else if (personA < personB) {
+				comparison = -1;
+			}
+			return comparison;
+		};
+		console.log('click');
+		const employees = this.state.employees.sort(compare);
+		this.setState({ employees });
 	};
 
 	handleInputChange = (event) => {
@@ -47,6 +61,11 @@ class App extends Component {
 		this.searchFilter(this.state.search);
 	};
 
+	handleOnClick = (event) => {
+		event.preventDefault();
+		this.sortEmployees();
+	};
+
 	render() {
 		return (
 			<Container>
@@ -56,7 +75,7 @@ class App extends Component {
 					handleInputChange={this.handleInputChange}
 					handleFormSubmit={this.handleFormSubmit}
 				/>
-				<Table data={this.state.employees} />
+				<Table data={this.state.employees} onClick={this.handleOnClick} />
 			</Container>
 		);
 	}
