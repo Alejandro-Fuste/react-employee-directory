@@ -1,11 +1,20 @@
 import React from 'react';
 import './style.css';
 
-function Search() {
+function Search(props) {
 	return (
-		<div className="input-group searchDiv mb-3">
-			<input type="text" className="form-control searchBox" placeholder="Search Employee" />
-		</div>
+		<form onSubmit={props.handleFormSubmit}>
+			<div className="input-group searchDiv mb-3">
+				<input
+					onChange={props.handleInputChange}
+					value={props.value}
+					name="search"
+					type="text"
+					className="form-control searchBox"
+					placeholder="Search Employee"
+				/>
+			</div>
+		</form>
 	);
 }
 
