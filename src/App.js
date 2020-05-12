@@ -21,7 +21,9 @@ class App extends Component {
 	searchFilter = (query) => {
 		// Creating search filter to narrow down employee list
 		const employees = this.state.employees.filter(
-			(employee) => employee.name.first === query || employee.name.last === query
+			(employee) =>
+				employee.name.first.toUpperCase() === query.toUpperCase() ||
+				employee.name.last.toUpperCase() === query.toUpperCase()
 		);
 
 		this.setState({ employees });
