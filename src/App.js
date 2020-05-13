@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Container from './components/Container';
 import Header from './components/Header';
+import Body from './components/Body';
 import Search from './components/Search';
 import Table from './components/Table';
-// import TableRows from './components/TableRows';
 import employees from './employees.json';
 
 class App extends Component {
@@ -41,21 +41,19 @@ class App extends Component {
 		this.searchFilter(this.state.search);
 	};
 
-	handleOnClick = (event) => {
-		event.preventDefault();
-		this.sortEmployees();
-	};
-
 	render() {
 		return (
 			<Container>
 				<Header />
-				<Search
-					value={this.state.search}
-					handleInputChange={this.handleInputChange}
-					handleFormSubmit={this.handleFormSubmit}
-				/>
-				<Table data={this.state.employees} onClick={this.handleOnClick} />
+				<Body>
+					<Search
+						value={this.state.search}
+						handleInputChange={this.handleInputChange}
+						handleFormSubmit={this.handleFormSubmit}
+						data={this.state.employees}
+					/>
+					<Table data={this.state.employees} search={this.state.search} />
+				</Body>
 			</Container>
 		);
 	}
