@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import moment from 'moment';
 
 function Table(props) {
+	const [ sort, setSort ] = useState(true);
+	const [ employees, setEmployees ] = useState({
+		data: props.data
+	});
+
+	const sortEmployees = () => {
+		if (sort) {
+			const sortedEmployees = employees.data.sort((a, b) => (a.name.last > b.name.last ? 1 : -1));
+			setEmployees({ ...employees, data: sortedEmployees });
+		} else {
+			const sortedEmployees = employees.data.sort((a, b) => (b.name.last > a.name.last ? 1 : -1));
+			setEmployees({ ...employees, data: sortedEmployees });
+		}
+		setSort(!sort);
+	};
+
 	return (
 		<table className="table table-striped">
 			<thead>
 				<tr>
 					<th scope="col">Image</th>
 					<th scope="col">
-						<button className="sortButton" onClick={props.handleOnClick}>
+						<button className="sortButton" onClick={sortEmployees}>
 							Name
 						</button>
 					</th>
@@ -19,7 +35,7 @@ function Table(props) {
 				</tr>
 			</thead>
 			<tbody>
-				{props.data.map((x, i) => (
+				{employees.data.map((x, i) => (
 					<tr key={`tr-${i}`}>
 						<td>
 							<img alt={`${x.name.first} ${x.name.last}`} src={x.picture.thumbnail} />

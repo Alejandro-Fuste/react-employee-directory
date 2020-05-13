@@ -14,10 +14,6 @@ class App extends Component {
 		search: ''
 	};
 
-	componentDidMount() {
-		this.setState({ employees });
-	}
-
 	searchFilter = (query) => {
 		// Creating search filter to narrow down employee list
 		const employees = this.state.employees.filter(
@@ -28,24 +24,6 @@ class App extends Component {
 
 		this.setState({ employees });
 		console.log(employees);
-	};
-
-	sortEmployees = () => {
-		const compare = (a, b) => {
-			const personA = a.name.last.toUpperCase();
-			const personB = b.name.last.toUpperCase();
-
-			let comparison = 0;
-			if (personA > personB) {
-				comparison = 1;
-			} else if (personA < personB) {
-				comparison = -1;
-			}
-			return comparison;
-		};
-		console.log('click');
-		const employees = this.state.employees.sort(compare);
-		this.setState({ employees });
 	};
 
 	handleInputChange = (event) => {
