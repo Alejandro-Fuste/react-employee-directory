@@ -23,13 +23,12 @@ class App extends Component {
 			this.setState({ filterEmployees: [ ...employees ] });
 			return;
 		}
-		// Search filter to narrow down employee list
+
 		const filterEmployees = this.state.employees.filter(
 			(employee) =>
 				employee.name.first.toUpperCase() === query.toUpperCase() ||
 				employee.name.last.toUpperCase() === query.toUpperCase()
 		);
-
 		this.setState({ filterEmployees });
 		console.log(employees);
 	};
@@ -39,7 +38,7 @@ class App extends Component {
 		const { value, name } = event.target;
 
 		// Updating the input's state...
-		// ...the name variable is the input's props
+		// ...the name variable is in the input's props
 		// ...the value is what the user types in the input box
 		this.setState({
 			[name]: value
@@ -86,12 +85,9 @@ class App extends Component {
 						handleInputChange={this.handleInputChange}
 						handleFormSubmit={this.handleFormSubmit}
 						data={this.state.employees}
+						filterBy={this.state.filterBy}
 					/>
-					<Table
-						data={this.state.filterEmployees}
-						search={this.state.search}
-						sortEmployees={this.sortEmployees}
-					/>
+					<Table data={this.state.filterEmployees} sortEmployees={this.sortEmployees} />
 				</Body>
 			</Container>
 		);
@@ -99,3 +95,30 @@ class App extends Component {
 }
 
 export default App;
+
+// Search filter to narrow down employee list
+// let filteredEmp = [];
+// switch (query) {
+// 	case 'name':
+// 		filteredEmp = this.state.employees.filter(
+// 			(employee) =>
+// 				employee.name.first.toUpperCase() === query.toUpperCase() ||
+// 				employee.name.last.toUpperCase() === query.toUpperCase()
+// 		);
+// 		console.log(filteredEmp);
+// 		return this.setState({ filterEmployees: filteredEmp });
+
+// 	case 'phone':
+// 		filteredEmp = this.state.employees.filter((employee) => employee.phone.toString() === query);
+// 		console.log(filteredEmp);
+// 		return this.setState({ filterEmployees: filteredEmp });
+
+// 	case 'email':
+// 		filteredEmp = this.state.employees.filter((employee) => employee.email.toLowerCase() === query.toLowerCase());
+// 		console.log(filteredEmp);
+// 		return this.setState({ filterEmployees: filteredEmp });
+
+// 	default:
+// 		filteredEmp = this.state.filterEmployees;
+// 		return this.setState({ filterEmployees: filteredEmp });
+// }
