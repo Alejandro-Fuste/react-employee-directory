@@ -4,7 +4,7 @@
 
 ## Description 
 
-This project is a react only application. The purpose of the application is to have a react application that is used as an employee directory. When the application is rendered, the user can view non-sensitive data about other employees. The user can sort and filter the rendered data. 
+This project is a react only application. The purpose of the application is to have a react application that is used as an employee directory. When the application is rendered, the user can view non-sensitive data about other employees. The user can sort and filter the rendered data. You can see the deployed site by [clicking on this link!](https://alejandro-fuste.github.io/react-employee-directory/).
 
 ## User Story
 
@@ -70,7 +70,7 @@ npm test
 
 If you have any questions about the repo, open an issue or contact [Alejandro Fuste](https://github.com/ZepCap) directly through GitHub.
 
-## Finished HW GIF
+## Sample GIF
 
 <img src="./src/images/gif1.gif" alt="finished gif 1" style="border-radius: 16px" width="300" height="180"/>
 
