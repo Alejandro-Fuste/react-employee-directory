@@ -8,7 +8,7 @@ This project is a react only application. The purpose of the application is to h
 
 ## User Story
 
-```
+```md 
 
 AS A user
 
